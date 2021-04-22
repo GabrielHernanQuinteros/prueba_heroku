@@ -26,12 +26,15 @@ from Aplicaciones.core.views import *
 
 from django.urls import path, include
 
+from django.conf import settings     # Agregado para Heroku
+from django.conf.urls.static import static     # Agregado para Heroku
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Aplicaciones.Academico.urls')),
     path('', include('Aplicaciones.core.urls'))
-]
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)     # Agregado para Heroku
 
 
 #========================================================================================
